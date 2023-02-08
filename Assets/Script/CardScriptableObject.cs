@@ -4,11 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AnimalCardScriptableObject", menuName = "ScriptableObject/Card")]
 public class CardScriptableObject : ScriptableObject
 {
-    [SerializeField] GameObject animal;
-    [SerializeField] GameObject terrain;
+    [SerializeField] AnimalScript animal;
+    [SerializeField] CardeBase cardBass;
 
-    public GameObject Animal { get => animal; private set => animal = value; }
-    public GameObject Terrain { get => terrain; private set => terrain = value; }
-
-
+    
+    public AnimalScript Animal { get => animal; private set => animal = value; }
+    public CardeBase CardBass { get => cardBass; private set => cardBass = value; }
 }
