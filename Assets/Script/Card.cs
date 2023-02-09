@@ -11,8 +11,8 @@ public class Card : MonoBehaviour
     [ContextMenu("InstantiateCard")]
     public void InstantiateCard()
     {
-        cardeBase = Instantiate(cardScriptable.CardBass, transform.position,Quaternion.identity, transform);
-        animal = Instantiate(cardScriptable.Animal, transform.position, Quaternion.identity, transform);
+        cardeBase = Instantiate(cardScriptable.CardBass, transform.position, Quaternion.identity, transform);
+        animal = Instantiate(cardScriptable.Animal, new Vector3( transform.position.x, transform.position.y , transform.position.z) , Quaternion.identity, transform);
     }
     [ContextMenu("HideAnimal")]
     public void HideAnimal()

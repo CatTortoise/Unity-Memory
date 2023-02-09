@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 3584599820630843869}
   - component: {fileID: 3584599820630843842}
   - component: {fileID: 3584599820630843843}
-  - component: {fileID: 3584599820630843840}
+  - component: {fileID: 2685612920953820711}
   - component: {fileID: 2610573347134615400}
   - component: {fileID: 4791757930193975621}
   m_Layer: 0
@@ -751,8 +751,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &3584599820630843840
-CapsuleCollider:
+--- !u!65 &2685612920953820711
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -761,10 +761,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.20862022
-  m_Height: 0.6724541
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.39819992, z: 0.029793113}
+  serializedVersion: 2
+  m_Size: {x: 0.4572159, y: 0.76496416, z: 0.511472}
+  m_Center: {x: -0.00022429973, y: 0.38161716, z: 0.020406663}
 --- !u!54 &2610573347134615400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -776,10 +775,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 106
+  m_Constraints: 90
   m_CollisionDetection: 0
 --- !u!114 &4791757930193975621
 MonoBehaviour:
@@ -793,4 +792,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6f7dee339e10e438e5f398eb4c421d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalRigidbody: {fileID: 0}
+  animalRigidbody: {fileID: 2610573347134615400}
+  animalTransform: {fileID: 3584599820630843869}
