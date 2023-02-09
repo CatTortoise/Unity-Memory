@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardeBase : MonoBehaviour
 {
    [SerializeField] Rigidbody rigidbody;
+    bool isRevealed = false;
 
     [ContextMenu("Flipcard")]
     public void Flipcard()

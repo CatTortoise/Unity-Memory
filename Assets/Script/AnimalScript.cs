@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class AnimalScript : MonoBehaviour
 {
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] Rigidbody animalRigidbody;
+
+    private void FixedUpdate()
+    {
+        
+    }
+
 }

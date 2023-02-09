@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] CardScriptableObject cardScriptable;
-    bool isRevealed = false;
+    public CardScriptableObject cardScriptable;
+    private AnimalScript animal;
+    private CardeBase cardeBase;
 
-   
-
+    [ContextMenu("InstantiateCard")]
+    public void InstantiateCard()
+    {
+        cardeBase = Instantiate(cardScriptable.CardBass, transform.position,Quaternion.identity, transform);
+        animal = Instantiate(cardScriptable.Animal, transform.position, Quaternion.identity, transform);
+    }
+    [ContextMenu("HideAnimal")]
+    public void HideAnimal()
+    {
+        if(animal != null)
+        {
+            if(animal.gameObject.active)
+            {
+                animal.gameObject.active = false;
+            }
+            else
+            {
+                animal.gameObject.active = true;
+            }
+        }
+    }
 
 }

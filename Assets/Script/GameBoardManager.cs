@@ -21,9 +21,14 @@ public class GameBoardManager : MonoBehaviour
     [ContextMenu("GenerateBoard")]
     public void GenerateBoard()
     {
+        int cardIndex;
         int boardSize = numberOfColumns * numberOfRows;
         if (boardSize >= cards.Length * setSize)
+        {
             boardSize = cards.Length * setSize;
+            numberOfColumns = Mathf.FloorToInt(Mathf.Sqrt(boardSize)) ;
+            numberOfRows = boardSize/ numberOfColumns;
+        }
         Vector3[] UsedLocations = new Vector3[boardSize];
         GameBoardCards = new Card[boardSize];
         List<int> cardMagazine = new List<int>(boardSize);
@@ -37,27 +42,34 @@ public class GameBoardManager : MonoBehaviour
         }
         for (int i = 0; i < boardSize; i++)
         {
-            int cardMagazineIndex = Random.Range(0, cardMagazine.Count);
+            cardIndex = Random.Range(0, cardMagazine.Count);
 
-            GameBoardCards[i] = cards[cardMagazine[cardMagazineIndex]];
-            cardMagazine.RemoveAt(cardMagazineIndex);
+            GameBoardCards[i] = cards[cardMagazine[cardIndex]];
+            cardMagazine.RemoveAt(cardIndex);
         }
 
+        cardIndex = 0;
         for (int x = 0; x < numberOfRows; x++)
         {
             for (int z = 0; z < numberOfColumns; z++)
             {
                 boardCurrentVector.x = (firstSpawnLocation.position.x + spaceBetweenCards) * x;
                 boardCurrentVector.z = (firstSpawnLocation.position.z + spaceBetweenCards) * z;
-                GameBoardCards[x + z] = Instantiate(GameBoardCards[x + z], boardCurrentVector, Quaternion.identity);
+                GameBoardCards[cardIndex] = Instantiate(GameBoardCards[cardIndex], boardCurrentVector, Quaternion.identity,transform);
+                GameBoardCards[cardIndex].name = $"{GameBoardCards[cardIndex].cardScriptable.name} ({x},{z})";
+                GameBoardCards[cardIndex].InstantiateCard();
+                cardIndex++;
             }
         }
     }
 
-    public void ClearBoard() { }
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("ClearBoard")]
+    public void ClearBoard() 
     {
-        
+        for (int i = GameBoardCards.Length - 1; i >= 0 ; i--)
+        {
+            Destroy(GameBoardCards[i].gameObject);
+        }
     }
+
 }
