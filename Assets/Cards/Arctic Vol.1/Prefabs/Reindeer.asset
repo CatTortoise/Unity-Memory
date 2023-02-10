@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Reindeer
   m_EditorClassIdentifier: 
   animal: {fileID: -5223563003174720777, guid: 7dfb1708f893c074aa0972236d3c4977, type: 3}
-  cardBass: {fileID: 2554938260523354283, guid: c9b1300ba27076d45ac0e823229fdf54, type: 3}
+  cardBass: {fileID: -8582024882647961412, guid: 61ce64b5a406e4e45be40f930fcaec43, type: 3}

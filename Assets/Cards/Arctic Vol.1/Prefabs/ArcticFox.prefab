@@ -577,8 +577,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5528603755101481349}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6246ef5693d81214a963632316119416, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2b25437869ac80d4c98e82561fbc32a9, type: 2}
+  m_Avatar: {fileID: 9000000, guid: ac5f74402a599e14eaca8727e6a27384, type: 3}
+  m_Controller: {fileID: 9100000, guid: ebb5f144c1caa61429ec1b9fd98055a7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -631,10 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalRigidbody: {fileID: 4730892487690370230}
   animalTransform: {fileID: 5528603755101481345}
-  upForce: 0.3
-  rotateRightSpeed: 0
-  pulseTimer: 100
-  animalGravity: 0.1
 --- !u!1 &6702221885175240864
 GameObject:
   m_ObjectHideFlags: 0

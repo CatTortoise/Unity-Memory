@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SnowWeasel
   m_EditorClassIdentifier: 
   animal: {fileID: -729357058546828444, guid: f039092cd8853a748b106ef0724759ea, type: 3}
-  cardBass: {fileID: 2554938260523354283, guid: c9b1300ba27076d45ac0e823229fdf54, type: 3}
+  cardBass: {fileID: -8582024882647961412, guid: 61ce64b5a406e4e45be40f930fcaec43, type: 3}

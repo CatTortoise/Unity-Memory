@@ -30,4 +30,11 @@ public class Card : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        HideAnimal();
+    }
+
+
+
 }

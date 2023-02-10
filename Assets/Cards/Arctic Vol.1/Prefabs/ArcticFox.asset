@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ArcticFox
   m_EditorClassIdentifier: 
   animal: {fileID: 2553416930944888263, guid: 7768d14fcd517cb4fb17a9979f12edbf, type: 3}
-  cardBass: {fileID: 2554938260523354283, guid: c9b1300ba27076d45ac0e823229fdf54, type: 3}
+  cardBass: {fileID: -8582024882647961412, guid: 61ce64b5a406e4e45be40f930fcaec43, type: 3}
