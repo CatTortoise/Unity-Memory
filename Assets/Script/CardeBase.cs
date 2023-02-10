@@ -5,19 +5,21 @@ using UnityEngine;
 public class CardeBase : MonoBehaviour
 {
    [SerializeField] Rigidbody rigidbody;
-    bool isRevealed = false;
+   bool isRevealed = false;
+
+    public bool IsRevealed { get => isRevealed; private set => isRevealed = value; }
 
     [ContextMenu("Flipcard")]
     public void Flipcard()
     {
-        if (isRevealed)
+        if (IsRevealed)
         {
-            isRevealed = false;
+            IsRevealed = false;
         }
         else
         {
-            isRevealed = true;
+            IsRevealed = true;
         }
-        Debug.Log($"isRevealed: {isRevealed}");
+        Debug.Log($"isRevealed: {IsRevealed}");
     }
 }

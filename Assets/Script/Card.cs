@@ -19,20 +19,16 @@ public class Card : MonoBehaviour
     {
         if(animal != null)
         {
-            if(animal.gameObject.active)
-            {
-                animal.gameObject.active = false;
-            }
-            else
-            {
-                animal.gameObject.active = true;
-            }
+            animal.gameObject.active = cardeBase.IsRevealed;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        HideAnimal();
+        if (cardeBase.IsRevealed)
+        {
+            HideAnimal();
+        }
     }
 
 
