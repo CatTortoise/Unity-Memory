@@ -5,7 +5,7 @@ using UnityEngine;
 public class CursorController : MonoBehaviour
 {
     [SerializeField] private Texture2D coursorTexture;
-
+    [SerializeField] private LocationMarkerScript locationMarker;
 
     void Start()
     {
@@ -15,8 +15,14 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity);
+        if (Input.GetMouseButton(0))
+        {
+            Physics.Raycast(ray, out hit);
+            locationMarker.ChangeLocation(new( hit.point.x,0, hit.point.z));
+        }
+        
+        
     }
 }

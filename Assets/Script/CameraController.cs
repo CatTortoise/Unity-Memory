@@ -38,22 +38,24 @@ public class CameraController : MonoBehaviour
     private Vector3 CheckedDirection()
     {
         Vector3 direction = new(0, 0, 0);
-
-        if (Input.GetKey(forward) || Input.mousePosition.y >= Screen.height - panBordreThickness)
+        if (Input.mousePosition.y <= Screen.height && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.x >= 0)
         {
-            direction.z = -1;
-        }
-        else if (Input.GetKey(backward) || Input.mousePosition.y <= panBordreThickness)
-        {
-            direction.z = 1;
-        }
-        if (Input.GetKey(right) || Input.mousePosition.x >= Screen.width - panBordreThickness)
-        {
-            direction.x = -1;
-        }
-        else if (Input.GetKey(left) || Input.mousePosition.x <= panBordreThickness)
-        {
-            direction.x = 1;
+            if (Input.GetKey(forward) || Input.mousePosition.y >= Screen.height - panBordreThickness)
+            {
+                direction.z = -1;
+            }
+            else if (Input.GetKey(backward) || Input.mousePosition.y <= panBordreThickness)
+            {
+                direction.z = 1;
+            }
+            if (Input.GetKey(right) || Input.mousePosition.x >= Screen.width - panBordreThickness)
+            {
+                direction.x = -1;
+            }
+            else if (Input.GetKey(left) || Input.mousePosition.x <= panBordreThickness)
+            {
+                direction.x = 1;
+            }
         }
 
         return direction;

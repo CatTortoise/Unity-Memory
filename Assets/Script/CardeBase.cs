@@ -22,4 +22,11 @@ public class CardeBase : MonoBehaviour
         }
         Debug.Log($"isRevealed: {IsRevealed}");
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("OnCollisionEnter");
+        if(collision.collider.tag == "Cursor")
+            Flipcard();
+    }
 }
