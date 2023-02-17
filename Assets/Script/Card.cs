@@ -7,6 +7,7 @@ public class Card : MonoBehaviour
     public CardScriptableObject cardScriptable;
     private AnimalScript animal;
     private CardeBase cardeBase;
+    private bool isHiden = false;
 
     [ContextMenu("InstantiateCard")]
     public void InstantiateCard()
@@ -14,20 +15,22 @@ public class Card : MonoBehaviour
         cardeBase = Instantiate(cardScriptable.CardBass, transform.position, Quaternion.identity, transform);
         animal = Instantiate(cardScriptable.Animal, new Vector3( transform.position.x, transform.position.y , transform.position.z) , Quaternion.identity, transform);
     }
-    [ContextMenu("HideAnimal")]
-    public void HideAnimal()
-    {
-        if(animal != null)
-        {
-            animal.gameObject.active = cardeBase.IsRevealed;
-        }
-    }
 
     private void Update()
     {
-        if (cardeBase.IsRevealed)
+        if (cardeBase.IsRevealed != isHiden)
         {
             HideAnimal();
+        }
+    }
+
+
+    private void HideAnimal()
+    {
+        if (animal != null)
+        {
+            animal.gameObject.active = cardeBase.IsRevealed;
+            isHiden = cardeBase.IsRevealed;
         }
     }
 

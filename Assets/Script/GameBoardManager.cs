@@ -11,6 +11,7 @@ public class GameBoardManager : MonoBehaviour
     [SerializeField] int setSize;
     [SerializeField] float spaceBetweenCards;
     [SerializeField] Transform firstSpawnLocation;
+    [SerializeField] float flipAllTimer;
     Card[] GameBoardCards;
 
     // Start is called before the first frame update
@@ -58,9 +59,16 @@ public class GameBoardManager : MonoBehaviour
                 GameBoardCards[cardIndex] = Instantiate(GameBoardCards[cardIndex], boardCurrentVector, Quaternion.identity,transform);
                 GameBoardCards[cardIndex].name = $"{GameBoardCards[cardIndex].cardScriptable.name} ({x},{z})";
                 GameBoardCards[cardIndex].InstantiateCard();
+                HideAnimals(GameBoardCards[cardIndex]);
+                StartCoroutine(FlipACardAfterTimer(GameBoardCards[cardIndex]));
                 cardIndex++;
             }
         }
+    }
+
+    private void HideAnimals(Card card)
+    {
+        card.cardScriptable.CardBass.Flipcard();
     }
 
     [ContextMenu("ClearBoard")]
@@ -70,6 +78,17 @@ public class GameBoardManager : MonoBehaviour
         {
             Destroy(GameBoardCards[i].gameObject);
         }
+    }
+
+    
+    IEnumerator FlipACardAfterTimer(Card card)
+    {
+        for (float i = flipAllTimer; i > 0; i -= 0.1f)
+        {
+            Debug.Log($"CollisionCoolDown: {i}");
+            yield return new WaitForSeconds(0.1f);
+        }
+        HideAnimals(card);
     }
 
 }

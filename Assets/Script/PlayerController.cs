@@ -7,16 +7,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody playerRigidbody;
     [SerializeField] private LocationMarkerScript locationMarker;
     [SerializeField] private float moveSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float flyingHeight;
+    [SerializeField] private float minFlyingVelocity;
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        Vector3 moveTo = Vector3.Lerp(transform.position, locationMarker.transform.position, moveSpeed * Time.deltaTime);
-        playerRigidbody.MovePosition(moveTo);
+        float height;
+        if (Mathf.Abs(playerRigidbody.velocity.x + playerRigidbody.velocity.z) < minFlyingVelocity)
+            height = locationMarker.transform.position.y;
+        else
+            height = flyingHeight;
+        Vector3 moveTo = Vector3.Slerp(transform.position,new(locationMarker.transform.position.x, height, locationMarker.transform.position.z), moveSpeed * Time.deltaTime);
+        //playerRigidbody.MovePosition(moveTo);
+        //Vector3 moveTo = new()
+        //playerRigidbody.AddForce((locationMarker.transform.position - transform.position)* moveSpeed * Time.deltaTime, ForceMode.Acceleration);
+        playerRigidbody.AddForce((moveTo - transform.position) * moveSpeed * Time.deltaTime, ForceMode.Acceleration);
     }
+
 }

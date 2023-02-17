@@ -22,7 +22,5 @@ public class CursorController : MonoBehaviour
             Physics.Raycast(ray, out hit);
             locationMarker.ChangeLocation(new( hit.point.x,0, hit.point.z));
         }
-        
-        
     }
 }
