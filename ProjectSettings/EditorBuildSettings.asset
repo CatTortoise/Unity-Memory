@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MaineMenu.unity
+    guid: 3bf0ec35b88d3344a807f36a29dc694a
+  - enabled: 1
     path: Assets/Scenes/ArcticScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

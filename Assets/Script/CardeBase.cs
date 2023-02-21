@@ -8,7 +8,7 @@ public class CardeBase : MonoBehaviour
     [SerializeField] float collisionOnCoolDown;
     [SerializeField] bool flip ;
     [SerializeField] GameObject swhoos;
-    [SerializeField] GameBoardManager gameBoard;
+    [SerializeField] GameObject circle;
     private string colliderName;
 
     bool isCollisionOnCoolDown = false;
@@ -20,6 +20,7 @@ public class CardeBase : MonoBehaviour
     {
         flip = true;
         swhoos.SetActive(false);
+        circle.SetActive(false);
     }
 
 
@@ -36,7 +37,10 @@ public class CardeBase : MonoBehaviour
     {
         swhoos.SetActive(!swhoos.activeInHierarchy);
     }
-
+    public void TagolCircle()
+    {
+        circle.SetActive(!circle.activeInHierarchy);
+    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnCollisionEnter "+ other.tag);
