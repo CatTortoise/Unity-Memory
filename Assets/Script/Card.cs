@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public CardScriptableObject cardScriptable;
+    [SerializeField] private CardScriptableObject cardScriptable;
     private AnimalScript animal;
     private CardeBase cardeBase;
-    private bool isHiden = false;
+    private int cardSetId;
+    public AnimalScript Animal { get => animal; private set => animal = value; }
+    public CardeBase CardeBase { get => cardeBase; private set => cardeBase = value; }
+    public CardScriptableObject CardScriptable { get => cardScriptable; private set => cardScriptable = value; }
+    public int CardSetId { get => cardSetId; private set =>  cardSetId = value; }
 
     [ContextMenu("InstantiateCard")]
-    public void InstantiateCard()
+    public void InstantiateCard(int cardId)
     {
+        CardSetId = cardId;
         cardeBase = Instantiate(cardScriptable.CardBass, transform.position, Quaternion.identity, transform);
         animal = Instantiate(cardScriptable.Animal, new Vector3( transform.position.x, transform.position.y , transform.position.z) , Quaternion.identity, transform);
     }
 
     private void Update()
     {
-        if (cardeBase.IsRevealed != isHiden)
+        if (cardeBase.Flip)
         {
             HideAnimal();
         }
@@ -29,8 +34,8 @@ public class Card : MonoBehaviour
     {
         if (animal != null)
         {
-            animal.gameObject.active = cardeBase.IsRevealed;
-            isHiden = cardeBase.IsRevealed;
+            animal.gameObject.SetActive(!animal.gameObject.activeInHierarchy);
+            cardeBase.Flipcard("Card");
         }
     }
 

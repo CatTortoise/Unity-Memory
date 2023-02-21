@@ -24,5 +24,6 @@ public class PlayerController : MonoBehaviour
         //playerRigidbody.AddForce((locationMarker.transform.position - transform.position)* moveSpeed * Time.deltaTime, ForceMode.Acceleration);
         playerRigidbody.AddForce((moveTo - transform.position) * moveSpeed * Time.deltaTime, ForceMode.Acceleration);
     }
+    
 
 }

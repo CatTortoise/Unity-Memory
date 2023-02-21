@@ -7,10 +7,11 @@ public class LocationMarkerScript : MonoBehaviour
     public void ChangeLocation(Vector3 newLocation)
     {
         transform.position = newLocation;
-        gameObject.active = true;
+        gameObject.SetActive(true);
     }
     private void OnTriggerEnter(Collider other)
     {
-        gameObject.active = false;
+        if(other.tag == "Player")
+            gameObject.SetActive(false);
     }
 }

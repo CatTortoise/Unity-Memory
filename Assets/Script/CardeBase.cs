@@ -6,24 +6,35 @@ public class CardeBase : MonoBehaviour
 {
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] float collisionOnCoolDown;
-    bool isRevealed = true;
+    [SerializeField] bool flip ;
+    [SerializeField] GameObject swhoos;
+    [SerializeField] GameBoardManager gameBoard;
+    private string colliderName;
 
     bool isCollisionOnCoolDown = false;
 
-    public bool IsRevealed { get => isRevealed; private set => isRevealed = value; }
+    public bool Flip { get => flip; private set => flip = value; }
+    public string ColliderName { get => colliderName; set => colliderName = value; }
+
+    private void Start()
+    {
+        flip = true;
+        swhoos.SetActive(false);
+    }
+
 
     [ContextMenu("Flipcard")]
-    public void Flipcard()
+    public void Flipcard(string fliperName)
     {
-        Debug.Log($"Flipcard");
-        if (IsRevealed)
+        flip =! flip;
+        if (flip)
         {
-            IsRevealed = false;
+            ColliderName = fliperName;
         }
-        else
-        {
-            IsRevealed = true;
-        }
+    }
+    public void TagolSwhoos()
+    {
+        swhoos.SetActive(!swhoos.activeInHierarchy);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +42,7 @@ public class CardeBase : MonoBehaviour
         Debug.Log("OnCollisionEnter "+ other.tag);
         if (other.tag == "Player" && !isCollisionOnCoolDown)
         {
-            Flipcard();
+            Flipcard(other.name);
             StartCoroutine(CollisionCoolDown());
         }
     }
